@@ -84,8 +84,8 @@ public:
     }
 
 public: // - Iterator
-    virtual nodes_map::iterator begin() { return std::begin(my_nodes); }
-    virtual nodes_map::iterator end() { return std::end(my_nodes); }
+    virtual iterator begin() { return std::begin(my_nodes); }
+    virtual iterator end() { return std::end(my_nodes); }
 
 public: // - Public
     virtual NodeType type() const { return Folder; }
