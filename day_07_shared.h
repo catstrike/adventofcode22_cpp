@@ -1,5 +1,5 @@
 #ifndef __DAY_07_SHARED_H__
-#define __DAY_06_SHARED_H__
+#define __DAY_07_SHARED_H__
 
 #include <stdexcept>
 
