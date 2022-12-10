@@ -9,34 +9,30 @@
 
 class World : public IWorld
 {
-    static const int folowers_count = 9; 
+    static const int knots_count = 10; 
 
-    Vector2DInt my_head;
-    std::array<Vector2DInt, folowers_count> my_knots {};
-
+    std::array<Vector2DInt, knots_count> my_knots {};
     std::unordered_set<Vector2DInt> tail_positoins;
 
 public:
     World()
-        : my_head(0, 0)
     {
         tail_positoins.insert(tail());
     }
 
     void move_head(const Vector2DInt& direction)
     {
-        my_head += direction;
+        my_knots[0] += direction;
 
-        Vector2DInt head = my_head;
-
-        for (int i = 0; i < folowers_count; i++) {
-            auto knot = my_knots[i];
+        for (int i = 1; i < knots_count; i++) {
+            auto& head = my_knots[i - 1];
+            auto& knot = my_knots[i];
+            
             if (!is_far(head, knot)) {
                 return;
             }
 
             knot += get_folowing_direction(head, knot);
-            head = my_knots[i] = knot;
         }
 
         tail_positoins.insert(tail());
@@ -49,7 +45,7 @@ public:
 
     const Vector2DInt& tail()
     {
-        return my_knots[folowers_count - 1];
+        return my_knots[knots_count - 1];
     }
 
 private:
